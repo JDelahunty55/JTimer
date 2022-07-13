@@ -1,3 +1,39 @@
+  // -----------------------------------
+
+  // Scramble Functions
+
+
+function generateScramble() {
+    const movesArr = ["R", "U", "F", "L", "D", "B"];
+    const variationsArr = ["", "'", "2"]
+
+    let scramble = [];
+    let randNum = 0;
+
+    while (scramble.length < 20) {
+        randNum = Math.floor(Math.random() * 6);
+
+        if (scramble.length == 0 || scramble[scramble.length - 1] != randNum) {
+            scramble.push(randNum);
+        }
+
+    }
+
+    for (i = 0; i < scramble.length; i++) {
+        randNum = Math.floor(Math.random() * 3);
+        scramble[i] = movesArr[scramble[i]] + variationsArr[randNum];
+    }
+
+    console.log(scramble);
+    return scramble.join(" ");
+
+}
+
+function setScramble() {
+    let scramble = generateScramble();
+    document.getElementById("scramble").innerHTML = scramble;
+}
+
 // ------------------------------------
 
 // Timer Functions
@@ -24,6 +60,7 @@ function startTimer() {
 function stopTimer() {
     timing = false;
     clearInterval(running);
+    setScramble();
 }
 
 function runTimer() {
@@ -64,5 +101,3 @@ document.addEventListener('keyup', (event) => {
         checkTimer();
     }
   }, false);
-
-  // ------------------------------------
