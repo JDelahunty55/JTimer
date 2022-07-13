@@ -1,4 +1,4 @@
-  // -----------------------------------
+ // -----------------------------------
 
   // Scramble Functions
 
@@ -33,6 +33,11 @@ function setScramble() {
     let scramble = generateScramble();
     document.getElementById("scramble").innerHTML = scramble;
 }
+
+
+$( document ).ready(function() {
+    setScramble();
+});
 
 // ------------------------------------
 
